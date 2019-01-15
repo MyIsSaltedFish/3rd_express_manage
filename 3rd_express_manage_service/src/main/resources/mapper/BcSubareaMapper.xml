@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.express.manage.mapper.BcSubareaMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.express.manage.entity.BcSubarea" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="decidedzone_id" property="decidedzoneId" jdbcType="VARCHAR" />
+    <result column="region_id" property="regionId" jdbcType="VARCHAR" />
+    <result column="addresskey" property="addresskey" jdbcType="VARCHAR" />
+    <result column="startnum" property="startnum" jdbcType="VARCHAR" />
+    <result column="endnum" property="endnum" jdbcType="VARCHAR" />
+    <result column="single" property="single" jdbcType="CHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, decidedzone_id, region_id, addresskey, startnum, endnum, single, position
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.express.manage.entity.BcSubareaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bc_subarea
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bc_subarea
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bc_subarea
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qf.express.manage.entity.BcSubareaExample" >
+    delete from bc_subarea
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qf.express.manage.entity.BcSubarea" >
+    insert into bc_subarea (id, decidedzone_id, region_id, 
+      addresskey, startnum, endnum, 
+      single, position)
+    values (#{id,jdbcType=VARCHAR}, #{decidedzoneId,jdbcType=VARCHAR}, #{regionId,jdbcType=VARCHAR}, 
+      #{addresskey,jdbcType=VARCHAR}, #{startnum,jdbcType=VARCHAR}, #{endnum,jdbcType=VARCHAR}, 
+      #{single,jdbcType=CHAR}, #{position,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.express.manage.entity.BcSubarea" >
+    insert into bc_subarea
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="decidedzoneId != null" >
+        decidedzone_id,
+      </if>
+      <if test="regionId != null" >
+        region_id,
+      </if>
+      <if test="addresskey != null" >
+        addresskey,
+      </if>
+      <if test="startnum != null" >
+        startnum,
+      </if>
+      <if test="endnum != null" >
+        endnum,
+      </if>
+      <if test="single != null" >
+        single,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="decidedzoneId != null" >
+        #{decidedzoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="addresskey != null" >
+        #{addresskey,jdbcType=VARCHAR},
+      </if>
+      <if test="startnum != null" >
+        #{startnum,jdbcType=VARCHAR},
+      </if>
+      <if test="endnum != null" >
+        #{endnum,jdbcType=VARCHAR},
+      </if>
+      <if test="single != null" >
+        #{single,jdbcType=CHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qf.express.manage.entity.BcSubareaExample" resultType="java.lang.Integer" >
+    select count(*) from bc_subarea
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bc_subarea
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.decidedzoneId != null" >
+        decidedzone_id = #{record.decidedzoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionId != null" >
+        region_id = #{record.regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addresskey != null" >
+        addresskey = #{record.addresskey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startnum != null" >
+        startnum = #{record.startnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endnum != null" >
+        endnum = #{record.endnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.single != null" >
+        single = #{record.single,jdbcType=CHAR},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bc_subarea
+    set id = #{record.id,jdbcType=VARCHAR},
+      decidedzone_id = #{record.decidedzoneId,jdbcType=VARCHAR},
+      region_id = #{record.regionId,jdbcType=VARCHAR},
+      addresskey = #{record.addresskey,jdbcType=VARCHAR},
+      startnum = #{record.startnum,jdbcType=VARCHAR},
+      endnum = #{record.endnum,jdbcType=VARCHAR},
+      single = #{record.single,jdbcType=CHAR},
+      position = #{record.position,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.express.manage.entity.BcSubarea" >
+    update bc_subarea
+    <set >
+      <if test="decidedzoneId != null" >
+        decidedzone_id = #{decidedzoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        region_id = #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="addresskey != null" >
+        addresskey = #{addresskey,jdbcType=VARCHAR},
+      </if>
+      <if test="startnum != null" >
+        startnum = #{startnum,jdbcType=VARCHAR},
+      </if>
+      <if test="endnum != null" >
+        endnum = #{endnum,jdbcType=VARCHAR},
+      </if>
+      <if test="single != null" >
+        single = #{single,jdbcType=CHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.express.manage.entity.BcSubarea" >
+    update bc_subarea
+    set decidedzone_id = #{decidedzoneId,jdbcType=VARCHAR},
+      region_id = #{regionId,jdbcType=VARCHAR},
+      addresskey = #{addresskey,jdbcType=VARCHAR},
+      startnum = #{startnum,jdbcType=VARCHAR},
+      endnum = #{endnum,jdbcType=VARCHAR},
+      single = #{single,jdbcType=CHAR},
+      position = #{position,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+   <select id="selectXQbyAccessKey" parameterType="map" resultMap="BaseResultMap">
+  	select a.* FROM bc_subarea a
+	where a.addresskey in
+	<foreach collection="keys" open="(" close=")" item="key" separator=",">
+		#{key}
+	</foreach>
+  </select>
+</mapper>

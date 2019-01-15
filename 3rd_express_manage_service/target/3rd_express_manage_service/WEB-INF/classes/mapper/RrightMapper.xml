@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.express.manage.mapper.RrightMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.express.manage.entity.Rright" >
+    <id column="rightid" property="rightid" jdbcType="INTEGER" />
+    <result column="righttext" property="righttext" jdbcType="VARCHAR" />
+    <result column="righttype" property="righttype" jdbcType="INTEGER" />
+    <result column="righturl" property="righturl" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="INTEGER" />
+    <result column="levelcount" property="levelcount" jdbcType="INTEGER" />
+    <result column="ismenu" property="ismenu" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="map01" type="com.qf.express.manage.entity.Rright" extends="BaseResultMap">
+    <result column="hasflag" property="hasflag" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rightid, righttext, righttype, righturl, parentid, levelcount, ismenu
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.express.manage.entity.RrightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rright
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rright
+    where rightid = #{rightid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rright
+    where rightid = #{rightid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qf.express.manage.entity.RrightExample" >
+    delete from rright
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qf.express.manage.entity.Rright" >
+    insert into rright (rightid, righttext, righttype, 
+      righturl, parentid, levelcount, 
+      ismenu)
+    values (#{rightid,jdbcType=INTEGER}, #{righttext,jdbcType=VARCHAR}, #{righttype,jdbcType=INTEGER}, 
+      #{righturl,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, #{levelcount,jdbcType=INTEGER}, 
+      #{ismenu,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.express.manage.entity.Rright" >
+    insert into rright
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rightid != null" >
+        rightid,
+      </if>
+      <if test="righttext != null" >
+        righttext,
+      </if>
+      <if test="righttype != null" >
+        righttype,
+      </if>
+      <if test="righturl != null" >
+        righturl,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="levelcount != null" >
+        levelcount,
+      </if>
+      <if test="ismenu != null" >
+        ismenu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rightid != null" >
+        #{rightid,jdbcType=INTEGER},
+      </if>
+      <if test="righttext != null" >
+        #{righttext,jdbcType=VARCHAR},
+      </if>
+      <if test="righttype != null" >
+        #{righttype,jdbcType=INTEGER},
+      </if>
+      <if test="righturl != null" >
+        #{righturl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="levelcount != null" >
+        #{levelcount,jdbcType=INTEGER},
+      </if>
+      <if test="ismenu != null" >
+        #{ismenu,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qf.express.manage.entity.RrightExample" resultType="java.lang.Integer" >
+    select count(*) from rright
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update rright
+    <set >
+      <if test="record.rightid != null" >
+        rightid = #{record.rightid,jdbcType=INTEGER},
+      </if>
+      <if test="record.righttext != null" >
+        righttext = #{record.righttext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.righttype != null" >
+        righttype = #{record.righttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.righturl != null" >
+        righturl = #{record.righturl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentid != null" >
+        parentid = #{record.parentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.levelcount != null" >
+        levelcount = #{record.levelcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.ismenu != null" >
+        ismenu = #{record.ismenu,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update rright
+    set rightid = #{record.rightid,jdbcType=INTEGER},
+      righttext = #{record.righttext,jdbcType=VARCHAR},
+      righttype = #{record.righttype,jdbcType=INTEGER},
+      righturl = #{record.righturl,jdbcType=VARCHAR},
+      parentid = #{record.parentid,jdbcType=INTEGER},
+      levelcount = #{record.levelcount,jdbcType=INTEGER},
+      ismenu = #{record.ismenu,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.express.manage.entity.Rright" >
+    update rright
+    <set >
+      <if test="righttext != null" >
+        righttext = #{righttext,jdbcType=VARCHAR},
+      </if>
+      <if test="righttype != null" >
+        righttype = #{righttype,jdbcType=INTEGER},
+      </if>
+      <if test="righturl != null" >
+        righturl = #{righturl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="levelcount != null" >
+        levelcount = #{levelcount,jdbcType=INTEGER},
+      </if>
+      <if test="ismenu != null" >
+        ismenu = #{ismenu,jdbcType=BIT},
+      </if>
+    </set>
+    where rightid = #{rightid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.express.manage.entity.Rright" >
+    update rright
+    set righttext = #{righttext,jdbcType=VARCHAR},
+      righttype = #{righttype,jdbcType=INTEGER},
+      righturl = #{righturl,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=INTEGER},
+      levelcount = #{levelcount,jdbcType=INTEGER},
+      ismenu = #{ismenu,jdbcType=BIT}
+    where rightid = #{rightid,jdbcType=INTEGER}
+  </update>
+  <select id="selectRightByPidAndRoleid" parameterType="map" resultMap="BaseResultMap">
+  	SELECT a.*
+	FROM rright a
+	<if test="roleid!=null">
+		LEFT JOIN role_right b
+		on a.rightid=b.rightid
+	</if>
+	WHERE a.parentid = #{parentid}
+	<if test="roleid!=null">
+		and b.roleid=#{roleid}
+	</if>
+	and ismenu=0
+  </select>
+  <select id="selectrightsforcurd" parameterType="map" resultMap="map01">
+  	select d.*,count(*) as hasflag FROM
+	(
+	select c.* from role_right a
+	left join rright c
+	on a.rightid=c.rightid
+	where a.roleid=#{roleid}
+	union all
+	select b.* from rright b
+	) d
+	where d.parentid=#{parentid}
+	GROUP BY d.rightid
+  </select>
+</mapper>

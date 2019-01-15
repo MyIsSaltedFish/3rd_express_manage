@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<!-- bean由注解配置   -->
+<context:annotation-config/>
+<!-- 去哪里扫描bean -->
+<context:component-scan base-package="com.qf.express"/>
+
+<!-- datasource 数据源 -->
+<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	<property name="url" value="jdbc:mysql://localhost:3306/express?characterEncoding=utf8"/>
+	<property name="username" value="root"/>
+	<property name="password" value="123456"/>
+</bean>
+
+<!-- session 共产 -->
+<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"/>
+	<property name="configLocation" value="classpath:mb.xml"/>
+	<property name="mapperLocations" value="classpath:mapper/*.xml"/>
+</bean>
+
+<!-- 要让spring容器 一起动 就为每一个mapper接口 声称mapper的实现类 -->
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<property name="basePackage" value="com.qf.express.manage.mapper"/>
+</bean>
+
+<!--事务相关 -->
+<!-- 要把spring提供好的 事务切面  配置成bean 被spring管理 -->
+<bean id="dstm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+
+<!-- 是否注解驱动 -->
+<!-- <tx:annotation-driven transaction-manager="dstm"/> -->
+
+<tx:advice id="dstmasp" transaction-manager="dstm">
+	<tx:attributes>
+		<tx:method name="add*" propagation="REQUIRED" />
+		<tx:method name="upd*" propagation="REQUIRED"/>
+		<tx:method name="del*" propagation="REQUIRED"/>
+		<tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+	</tx:attributes>
+</tx:advice>
+
+<aop:config>
+	<aop:pointcut expression="execution (* com.qf.express.manage.service..*.*(..))" id="tran_point"/>
+	<aop:advisor advice-ref="dstmasp" pointcut-ref="tran_point"/>
+</aop:config>
+
+</beans>

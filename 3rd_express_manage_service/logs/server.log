@@ -1,0 +1,182 @@
+
+
+[INFO ] 2018-11-06 22:31:53,365 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248)
+Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+
+
+[INFO ] 2018-11-06 22:31:53,389 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:174)
+Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4cc0edeb, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@457e2f02, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5c7fa833, org.springframework.test.context.transaction.TransactionalTestExecutionListener@39aeed2f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@724af044]
+
+
+[INFO ] 2018-11-06 22:31:53,861 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [applicationContext_dao.xml]
+
+
+[INFO ] 2018-11-06 22:31:54,326 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583)
+Refreshing org.springframework.context.support.GenericApplicationContext@59494225: startup date [Tue Nov 06 22:31:54 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-11-06 22:31:56,761 method:com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:655)
+{dataSource-1} inited
+
+
+[DEBUG] 2018-11-06 22:31:57,419 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+==>  Preparing: select uid, uname, utruename, upassword, roleid from users WHERE ( uname = ? ) 
+
+
+[DEBUG] 2018-11-06 22:31:57,463 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+==> Parameters: admin(String)
+
+
+[DEBUG] 2018-11-06 22:31:57,491 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+<==      Total: 1
+
+
+[INFO ] 2018-11-06 22:31:57,499 method:org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:984)
+Closing org.springframework.context.support.GenericApplicationContext@59494225: startup date [Tue Nov 06 22:31:54 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-11-06 22:31:57,506 method:com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1370)
+{dataSource-1} closed
+
+
+[INFO ] 2018-11-07 16:51:44,653 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248)
+Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+
+
+[INFO ] 2018-11-07 16:51:44,703 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:174)
+Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4cc0edeb, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@457e2f02, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5c7fa833, org.springframework.test.context.transaction.TransactionalTestExecutionListener@39aeed2f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@724af044]
+
+
+[INFO ] 2018-11-07 16:51:44,909 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [applicationContext.xml]
+
+
+[ERROR] 2018-11-07 16:51:44,914 method:org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:234)
+Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@457e2f02] to prepare test instance [com.qf.test.UserServiceTest@536aaa8d]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [applicationContext.xml]; nested exception is java.io.FileNotFoundException: class path resource [applicationContext.xml] cannot be opened because it does not exist
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:252)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadBeanDefinitions(AbstractGenericContextLoader.java:257)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:124)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:106)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:249)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: java.io.FileNotFoundException: class path resource [applicationContext.xml] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 37 more
+
+
+[INFO ] 2018-11-07 16:52:17,898 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248)
+Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+
+
+[INFO ] 2018-11-07 16:52:17,923 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:174)
+Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4cc0edeb, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@457e2f02, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5c7fa833, org.springframework.test.context.transaction.TransactionalTestExecutionListener@39aeed2f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@724af044]
+
+
+[INFO ] 2018-11-07 16:52:18,083 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [applicationContext_dao.xml]
+
+
+[INFO ] 2018-11-07 16:52:18,617 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583)
+Refreshing org.springframework.context.support.GenericApplicationContext@59494225: startup date [Wed Nov 07 16:52:18 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-11-07 16:52:21,372 method:com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:655)
+{dataSource-1} inited
+
+
+[DEBUG] 2018-11-07 16:52:21,902 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+==>  Preparing: select id, name, telephone, haspda, deltag, station, standard from bc_staff 
+
+
+[DEBUG] 2018-11-07 16:52:21,942 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+==> Parameters: 
+
+
+[DEBUG] 2018-11-07 16:52:21,966 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+<==      Total: 12
+
+
+[INFO ] 2018-11-07 16:52:21,974 method:org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:984)
+Closing org.springframework.context.support.GenericApplicationContext@59494225: startup date [Wed Nov 07 16:52:18 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-11-07 16:52:21,983 method:com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1370)
+{dataSource-1} closed
+
+
+[INFO ] 2018-11-07 16:53:03,093 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248)
+Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+
+
+[INFO ] 2018-11-07 16:53:03,120 method:org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:174)
+Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4cc0edeb, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@457e2f02, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5c7fa833, org.springframework.test.context.transaction.TransactionalTestExecutionListener@39aeed2f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@724af044]
+
+
+[INFO ] 2018-11-07 16:53:03,283 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [applicationContext_dao.xml]
+
+
+[INFO ] 2018-11-07 16:53:03,885 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583)
+Refreshing org.springframework.context.support.GenericApplicationContext@59494225: startup date [Wed Nov 07 16:53:03 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-11-07 16:53:06,563 method:com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:655)
+{dataSource-1} inited
+
+
+[DEBUG] 2018-11-07 16:53:07,064 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+==>  Preparing: select id, name, telephone, haspda, deltag, station, standard from bc_staff 
+
+
+[DEBUG] 2018-11-07 16:53:07,100 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+==> Parameters: 
+
+
+[DEBUG] 2018-11-07 16:53:07,132 method:org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:139)
+<==      Total: 12
+
+
+[INFO ] 2018-11-07 16:53:07,147 method:org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:984)
+Closing org.springframework.context.support.GenericApplicationContext@59494225: startup date [Wed Nov 07 16:53:03 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-11-07 16:53:07,171 method:com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1370)
+{dataSource-1} closed
